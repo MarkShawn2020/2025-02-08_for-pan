@@ -12,7 +12,7 @@ export default function PhotoSection() {
       transition={{ duration: 0.8, delay: 0.2 }}
     >
       <Image
-        src="/heying.png"
+        src="/heying2.png"
         alt="感谢潘总交流会合影"
         fill
         className="object-cover"
