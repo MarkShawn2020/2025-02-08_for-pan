@@ -1,13 +1,6 @@
-import DeployButton from "@/components/deploy-button";
-import { EnvVarWarning } from "@/components/env-var-warning";
-import HeaderAuth from "@/components/header-auth";
-import { ThemeSwitcher } from "@/components/theme-switcher";
-import Logo from "@/components/logo";
-import { hasEnvVars } from "@/utils/supabase/check-env-vars";
 import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
-import Link from "next/link";
-import { Suspense } from "react";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 import "./globals.css";
 
 const defaultUrl = process.env.VERCEL_URL
@@ -16,8 +9,8 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "CS Magic | Index",
-  description: "CS Magic - Where Code Meets Magic",
+  title: "感谢潘总交流会 | 2025",
+  description: "感谢潘总莅临指导，共创美好未来",
 };
 
 const geistSans = Geist({
@@ -45,26 +38,9 @@ export default function RootLayout({
           <main className="min-h-screen flex flex-col items-center">
             <div className="flex-1 w-full flex flex-col gap-8 md:gap-20 items-center">
               <nav className="w-full flex justify-center border-b border-b-foreground/10">
-                <div className="w-full max-w-5xl flex flex-col md:flex-row justify-between items-stretch md:items-center py-4 px-5 md:py-3">
-                  <div className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-4 md:gap-6">
-                    <Link 
-                      href={"/"} 
-                      className="flex items-center gap-2 text-lg md:text-base font-semibold hover:opacity-70 transition-opacity"
-                    >
-                      <Logo mode="svg" className="h-8 w-auto" color="currentColor" />
-                      <span>CS Magic</span>
-                    </Link>
-                    <DeployButton />
-                  </div>
-                  
-                  <div className="mt-4 md:mt-0 flex justify-center items-center">
-                    {!hasEnvVars ? (
-                      <EnvVarWarning />
-                    ) : (
-                      <div className="flex gap-4 items-center">
-                        <HeaderAuth />
-                      </div>
-                    )}
+                <div className="w-full max-w-5xl flex justify-center items-center py-6 px-5">
+                  <div className="text-2xl font-bold text-primary">
+                    感谢潘总交流会
                   </div>
                 </div>
               </nav>
@@ -73,16 +49,8 @@ export default function RootLayout({
               </div>
 
               <footer className="w-full flex flex-col md:flex-row items-center justify-center border-t mx-auto text-center text-xs gap-4 md:gap-8 py-8 md:py-16 px-4">
-                <p>
-                  Powered by{" "}
-                  <a
-                    href="https://github.com/markshawn2020"
-                    target="_blank"
-                    className="font-bold hover:underline"
-                    rel="noreferrer"
-                  >
-                    CS Magic
-                  </a>
+                <p className="text-foreground/70">
+                  © 2025 感谢潘总交流会
                 </p>
                 <ThemeSwitcher />
               </footer>

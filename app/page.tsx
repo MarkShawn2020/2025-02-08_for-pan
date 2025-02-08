@@ -1,65 +1,73 @@
-import Hero from "@/components/hero";
-import Logo from "@/components/logo";
 import { Button } from "@/components/ui/button";
-import { createClient } from "@/utils/supabase/server";
-import ConnectSupabaseSteps from "@/components/tutorial/connect-supabase-steps";
-import SignUpUserSteps from "@/components/tutorial/sign-up-user-steps";
-import { hasEnvVars } from "@/utils/supabase/check-env-vars";
 
-// Landing Page Component
-const LandingPage = () => (
-  <div className="flex flex-col items-center justify-center py-20 text-center">
-    <Logo mode="svg" className="w-[180px] h-auto" color="currentColor" />
-    <h1 className="text-4xl font-bold m-4">Where Code Meets Magic</h1>
-  </div>
-);
-
-// Dashboard Component
-const Dashboard = () => (
-  <div className="flex flex-col gap-8 p-8">
-    <div className="flex justify-between items-center">
-      <h1 className="text-2xl font-bold">我的工作台</h1>
-      <Button className="px-4 py-2 rounded-lg">
-        新建项目
-      </Button>
+// 倒计时组件
+const CountdownTimer = () => {
+  const eventDate = new Date('2025-02-08T15:00:00+08:00');
+  return (
+    <div className="flex gap-4 text-center">
+      <div className="bg-primary/10 p-4 rounded-lg">
+        <div className="text-3xl font-bold text-primary">2025</div>
+        <div className="text-sm">年</div>
+      </div>
+      <div className="bg-primary/10 p-4 rounded-lg">
+        <div className="text-3xl font-bold text-primary">02</div>
+        <div className="text-sm">月</div>
+      </div>
+      <div className="bg-primary/10 p-4 rounded-lg">
+        <div className="text-3xl font-bold text-primary">08</div>
+        <div className="text-sm">日</div>
+      </div>
     </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {/* 这里可以放置项目卡片或其他内容 */}
-      <div className="border rounded-lg p-6 hover:shadow-lg transition-shadow">
-        <h3 className="font-semibold mb-2">示例项目</h3>
-        <p className="text-gray-600">开始创建您的第一个项目</p>
+  );
+};
+
+// 主要内容组件
+const MainContent = () => (
+  <div className="max-w-4xl mx-auto px-4 py-16 text-center">
+    <h1 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-primary to-primary/70 text-transparent bg-clip-text">
+      感谢潘总莅临指导
+    </h1>
+    
+    <p className="text-xl md:text-2xl mb-12 text-foreground/80">
+      携手共创美好未来
+    </p>
+
+    <CountdownTimer />
+
+    <div className="mt-16 space-y-8">
+      <div className="bg-card p-8 rounded-xl shadow-lg">
+        <h2 className="text-2xl font-semibold mb-4">交流会要点</h2>
+        <ul className="text-left space-y-4 text-lg">
+          <li className="flex items-center gap-2">
+            <span className="text-primary">•</span>
+            <span>深入探讨行业发展趋势</span>
+          </li>
+          <li className="flex items-center gap-2">
+            <span className="text-primary">•</span>
+            <span>分享宝贵经验与见解</span>
+          </li>
+          <li className="flex items-center gap-2">
+            <span className="text-primary">•</span>
+            <span>展望未来发展方向</span>
+          </li>
+        </ul>
+      </div>
+
+      <div className="bg-card p-8 rounded-xl shadow-lg">
+        <h2 className="text-2xl font-semibold mb-4">感谢寄语</h2>
+        <p className="text-lg leading-relaxed">
+          感谢潘总在百忙之中抽空莅临指导，您的远见卓识为我们指明了方向，
+          您的宝贵建议为我们注入了新的动力。我们将继续努力，以更优异的成绩回报您的期望！
+        </p>
       </div>
     </div>
   </div>
 );
 
-
-const Index =async () => {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-
-  return user ? <Dashboard /> : (
-    <>
-    <LandingPage />
-    <h2 className="font-medium text-lg md:text-xl mb-2 md:mb-4">Get Started</h2>
-<SignUpUserSteps />
-    </>
-  )
-}
-
-export default async function Home() {
-
-
+export default function Home() {
   return (
-    <main className="flex-1 w-full">
-        
-        {hasEnvVars ? <Index/> : (
-          <>
-          <h2 className="font-medium text-lg md:text-xl mb-2 md:mb-4">Get Started</h2>
-          <ConnectSupabaseSteps />
-          </>
-          )}
-      
+    <main className="flex-1 w-full bg-gradient-to-b from-background to-background/95">
+      <MainContent />
     </main>
   );
 }
