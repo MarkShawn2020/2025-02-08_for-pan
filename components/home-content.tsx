@@ -26,7 +26,7 @@ export default function HomeContent() {
             <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl 
                           transform group-hover:scale-[1.01] transition duration-500">
               <Image
-                src="/heying.png"
+                src="/heying2.png"
                 alt="感谢潘总交流会合影"
                 fill
                 className="object-cover transform scale-105 group-hover:scale-100 transition duration-1000"
